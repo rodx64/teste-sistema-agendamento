@@ -86,6 +86,22 @@ public class AgendamentoPaginadoRepository {
                     )
             );
         }
+        if (Objects.nonNull(agendamentoCriteriosDeBusca.getDataAgendamento())) {
+            predicates.add(
+                    criteriaBuilder.equal(
+                            agendamentoRoot.get("dataAgendamento"),
+                            agendamentoCriteriosDeBusca.getDataAgendamento()
+                    )
+            );
+        }
+        if (Objects.nonNull(agendamentoCriteriosDeBusca.getDataTransferencia())) {
+            predicates.add(
+                    criteriaBuilder.equal(
+                            agendamentoRoot.get("dataTransferencia"),
+                            agendamentoCriteriosDeBusca.getDataTransferencia()
+                    )
+            );
+        }
         return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
     }
 

@@ -1,0 +1,92 @@
+{
+	"info": {
+		"_postman_id": "fb04347f-b80b-460b-a48b-1e8021e9a74c",
+		"name": "Tokio",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9154808"
+	},
+	"item": [
+		{
+			"name": "listar com filtro",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/agendamentos/gerar-extrato?direcao=DESC&ordenarPor=dataTransferencia&numero=0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"agendamentos",
+						"gerar-extrato"
+					],
+					"query": [
+						{
+							"key": "quantidade",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "direcao",
+							"value": "DESC"
+						},
+						{
+							"key": "ordenarPor",
+							"value": "dataTransferencia"
+						},
+						{
+							"key": "numero",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "agendar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"contaOrigem\": \"2310\",\n  \"contaDestino\": \"2313\",\n  \"valor\": 200,\n  \"dataTransferencia\": \"2024-12-16\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/agendamentos/agendar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"agendamentos",
+						"agendar"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
