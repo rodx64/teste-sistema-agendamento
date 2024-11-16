@@ -14,4 +14,4 @@ Teste para o desenvolvimento de um sistema de agendamento de transferências fin
     - [url Swagger](http://localhost:8080/swagger-ui/index.html)
 
 ## Premissas Frontend
-- [ ] Utilizar VueJS ou Angular
+- [x] Utilizar VueJS ou Angular
