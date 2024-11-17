@@ -105,7 +105,7 @@ public class AgendamentoController {
     public ResponseEntity<?> gerarExtrato(PaginaAgendamento paginaAgendamento,
                                                 AgendamentoCriteriosDeBusca agendamentoCriteriosDeBusca) {
         Page<Agendamento> agendamentoList = agendamentoService.buscarTodosAgendamentos(paginaAgendamento, agendamentoCriteriosDeBusca);
-        return new ResponseEntity<>(agendamentoList.getContent(), HttpStatus.OK);
+        return new ResponseEntity<>(agendamentoList, HttpStatus.OK);
     }
 
 }
