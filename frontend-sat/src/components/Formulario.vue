@@ -72,60 +72,59 @@
 </template>
   
 <script>
-  import axios from "axios";
-  
-  export default {
-    name: "Formulario",
-    data() {
-      return {
-        formData: {
-          contaOrigem: "",
-          contaDestino: "",
-          valor: null,
-          dataTransferencia: "",
-        },
-        mensagem: null,
-      };
-    },
-    computed: {
-    dataMinima() {
-      const hoje = new Date();
-      return hoje.toISOString().split('T')[0];
-    },
-    dataMaxima() {
-      const hoje = new Date();
-      hoje.setDate(hoje.getDate() + 50); 
-      return hoje.toISOString().split('T')[0];
-    },
-  },
-    methods: {
-        editarMensagemCustomizada(event) {
-            event.target.setCustomValidity("Campo obrigatório, por favor preencha.");
-        },
-        limparMensagemCustomizada(event) {
-            event.target.setCustomValidity(""); 
-        },
-        async enviarFormulario() {
-            try {
-                const response = await axios.post("http://localhost:8080/api/agendamentos/agendar", this.formData);
-                this.mensagem = "Agendamento realizado com sucesso!";
-                this.tipoAlerta = "success";
-                console.log("Resposta da API:", response.data);
-        
-                this.formData = {
-                    contaOrigem: "",
-                    contaDestino: "",
-                    valor: null,
-                    dataTransferencia: "",
-                };
+import axios from "axios";
 
-            } catch (error) {
-                this.tipoAlerta = "danger"; 
-                this.mensagem = error.response.data;
-            }
-        },
-    },
-  };
+export default {
+  name: "Formulario",
+  data() {
+    return {
+      formData: {
+        contaOrigem: "",
+        contaDestino: "",
+        valor: null,
+        dataTransferencia: "",
+      },
+      mensagem: null,
+    };
+  },
+  computed: {
+  dataMinima() {
+    const hoje = new Date();
+    return hoje.toISOString().split('T')[0];
+  },
+  dataMaxima() {
+    const hoje = new Date();
+    hoje.setDate(hoje.getDate() + 50); 
+    return hoje.toISOString().split('T')[0];
+  },
+},
+  methods: {
+      editarMensagemCustomizada(event) {
+          event.target.setCustomValidity("Campo obrigatório, por favor preencha.");
+      },
+      limparMensagemCustomizada(event) {
+          event.target.setCustomValidity(""); 
+      },
+      async enviarFormulario() {
+          try {
+              const response = await axios.post("http://localhost:8080/api/agendamentos/agendar", this.formData);
+              this.mensagem = "Agendamento realizado com sucesso!";
+              this.tipoAlerta = "success";
+      
+              this.formData = {
+                  contaOrigem: "",
+                  contaDestino: "",
+                  valor: null,
+                  dataTransferencia: "",
+              };
+
+          } catch (error) {
+              this.tipoAlerta = "danger"; 
+              this.mensagem = error.response.data;
+          }
+      },
+  },
+};
 </script>
   
 <style scoped>
@@ -175,4 +174,3 @@ button:hover {
   border-radius: 8px;
 }
 </style>
-  
