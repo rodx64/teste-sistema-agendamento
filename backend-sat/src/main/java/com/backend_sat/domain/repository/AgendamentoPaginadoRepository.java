@@ -39,10 +39,17 @@ public class AgendamentoPaginadoRepository {
 
         var query = entityManager.createQuery(criteriaQuery);
 
-        query.setFirstResult(paginaAgendamento.getNumero() * paginaAgendamento.getQuantidade());
-        query.setMaxResults(paginaAgendamento.getQuantidade());
+        var usarPaginacao = paginaAgendamento.getQuantidade() > 0;
+                
+        if (usarPaginacao) {
+            query.setFirstResult(paginaAgendamento.getNumero() * paginaAgendamento.getQuantidade());
+            query.setMaxResults(paginaAgendamento.getQuantidade());
+        }
 
-        var paginas = buscarPaginas(paginaAgendamento);
+        var paginas = usarPaginacao
+                ? buscarPaginas(paginaAgendamento)
+                : Pageable.unpaged();
+        
         var quantidade = filtrarPorCriterio(filtros);
 
         return new PageImpl<>(query.getResultList(), paginas, quantidade);
