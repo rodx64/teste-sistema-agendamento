@@ -120,7 +120,9 @@ export default {
 
           } catch (error) {
               this.tipoAlerta = "danger"; 
-              this.mensagem = error.response.data;
+              this.mensagem = (error.code == "ERR_BAD_REQUEST") 
+                ? "O servidor está indisponível no momento." 
+                : error.response.data
           }
       },
   },
