@@ -21,3 +21,9 @@ Data de agendamento foi utilizado `LocalDateTime` com `@CreationTimestamp` para 
 
 ### [VueJS](https://vuejs.org/) + [Bootstrap](https://getbootstrap.com/docs/5.0/)
 Apesar de ter mais experiência em Angular  com Material Design, preferi utilizar o VueJS com Bootstrap como um desafio pessoal.
+
+### [Diretiva personalizada - formatDate](https://pt.vuejs.org/guide/reusability/custom-directives)
+Por questões de reuso, foi utilizada [diretiva personalizada](/frontend-sat/src/directives/formatDate.js) para formatar data.
+
+### [Lock date component](/frontend-sat/src/components/Formulario.vue#60)
+Apesar da [Api](/backend-sat/src/main/java/com/backend_sat/api/AgendamentoController.java#77) ter tratamento de exceção não haja taxa aplicável, o componente de seleção de dada no Vue foi limitado para evitar erros do usuário  
