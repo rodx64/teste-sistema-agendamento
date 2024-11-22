@@ -72,7 +72,7 @@
 </template>
   
 <script>
-import axios from "axios";
+import api from "@/config/api"
 
 export default {
   name: "Formulario",
@@ -107,7 +107,7 @@ export default {
       },
       async enviarFormulario() {
           try {
-              const response = await axios.post("http://localhost:8080/api/agendamentos/agendar", this.formData);
+              const response = await api.post("/agendamentos/agendar", this.formData);
               this.mensagem = "Agendamento realizado com sucesso!";
               this.tipoAlerta = "success";
       

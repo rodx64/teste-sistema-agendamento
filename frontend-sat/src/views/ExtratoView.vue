@@ -106,7 +106,7 @@
 <script>
 import Paginacao from "@/components/Paginacao.vue"; 
 import formatDate from '@/directives/formatDate'
-import axios from "axios";
+import api from '@/config/api'
 
 export default {
   name: 'ExtratoView',
@@ -144,7 +144,7 @@ export default {
       try {
         this.paginacao.numero = page - 1; 
 
-        const response = await axios.get("http://localhost:8080/api/agendamentos/gerar-extrato", {
+        const response = await api.get("/agendamentos/gerar-extrato", {
           params: {
             numero: this.paginacao.numero,
             quantidade: this.paginacao.quantidade,
